@@ -1,31 +1,269 @@
-# Tenth Example 
+# Fifteenth Example - introduce cls and @classmethod
 
 class Student:  
-    def __init__(self, name, house): # 
-        self.name = self.name
-        self.house = self.house
+    def __init__(self, name, house): 
+        self.name = name
+        self.house = house
+
+    def __str__(self):
+        return f"{self.name} from {self.house}"
+    
+    @classmethod # does not require the creation of a student first
+    def get(cls):
+        name = input("Name: ")
+        house = input("House: ")
+        return cls(name, house)
 
 def main():
-    student = get_student()
-    print(f"{student.name} from {student.house}")
-
-def get_student():
-    name = input("Name: ")
-    house = input("House: ")
-    student = Student(name, house) # 
-    return student
+    student = Student.get()
+    print(student)
 
 if __name__ == "__main__":
     main()
 
+
+# Fourteenth Example - introduce object properties and decorators
+
+# class Student:  
+#     def __init__(self, name, house): 
+#         if not name:
+#             raise ValueError("Missing name")
+#         self.name = name
+#         self.house = house
+# 
+#     def __str__(self):
+#         return f"{self.name} from {self.house}"
+#     
+#     @property
+#     def house(self):
+#         return self._house
+#     
+#     @house.setter 
+#     def house(self, house):
+#         if house not in ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]:
+#             raise ValueError("Invalid house")
+#         self._house = house 
+# 
+# def main():
+#     student = get_student()
+#     # removed this line in order for code to work
+#     print(student)
+# 
+# def get_student():
+#     name = input("Name: ")
+#     house = input("House: ") 
+#     return Student(name, house)
+# 
+# if __name__ == "__main__":
+#     main()
+
+
+
+# Fourteenth Example - introduce object properties and decorators
+# # cannot have a instance variable and a function called the same
+# 
+# class Student:  
+#     def __init__(self, name, house): 
+#         if not name:
+#             raise ValueError("Missing name")
+#         self.name = name
+#         self.house = house # this also calls the setter method
+# 
+#     def __str__(self):
+#         return f"{self.name} from {self.house}"
+#     
+#     @property
+#     def house(self):
+#         return self._house
+#     
+#     @house.setter # error checking can now live in the setter
+#     def house(self, house):
+#         if house not in ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]:
+#             raise ValueError("Invalid house")
+#         self._house = house # by convention programmers use the underscore to change the variable name slightly
+# 
+# # Getter @property and Setter @house.setter is controlled by python automatically by the call
+# # Getter and Setters protect other programmers from overwriting values
+# 
+# def main():
+#     student = get_student()
+#     student.house = "Number Four, Privet Drive" # have to remove this line in order for code to work
+#     print(student)
+# 
+# def get_student():
+#     name = input("Name: ")
+#     house = input("House: ") 
+#     return Student(name, house)
+# 
+# if __name__ == "__main__":
+#     main()
+# 
+# # a property prevents other programmers from messing up the object
+# # decorators modify the behaviors of properties
+
+
+# Thirteenth Example
+
+# class Student:  
+#     def __init__(self, name, house): 
+#         if not name:
+#             raise ValueError("Missing name")
+#         if house not in ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]:
+#             raise ValueError("Invalid house")
+#         self.name = name
+#         self.house = house
+# 
+#     def __str__(self):
+#         return f"{self.name} from {self.house}"
+# 
+# 
+# def main():
+#     student = get_student()
+#     student.house = "Number Four, Privet Drive" # current code allows overriding the value after the object is created
+#     print(student)
+# 
+# def get_student():
+#     name = input("Name: ")
+#     house = input("House: ") 
+#     return Student(name, house)
+# 
+# if __name__ == "__main__":
+#     main()
+# 
+# # this is a demo to setup the presentation of properties
+
+
+
+# Twelfth Example - custom functions created by the programmer
+
+# class Student:  
+#     def __init__(self, name, house, patronus): 
+#         if not name:
+#             raise ValueError("Missing name")
+#         if house not in ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]:
+#             raise ValueError("Invalid house")
+#         self.name = name
+#         self.house = house
+#         self.patronus = patronus
+# 
+#     def __str__(self):
+#         return f"{self.name} from {self.house}"
+#     
+#     def charm(self):
+#         match self.patronus:
+#             case "Stag":
+#                 return "🐴"
+#             case "Otter":
+#                 return "🦦"
+#             case "Jack Russell terrier":
+#                 return "🐶"
+#             case _: # default case uses underscore
+#                 return "🪄"
+# 
+# def main():
+#     student = get_student()
+#     print("Expecto Patronum!")
+#     print(student.charm()) # calling the method inside of the Student class
+# 
+# def get_student():
+#     name = input("Name: ")
+#     house = input("House: ")
+#     patronus = input("Patronus: ") 
+#     return Student(name, house, patronus)
+# 
+# if __name__ == "__main__":
+#     main()
+# 
+# # learn about the dunder methods that come with Python objects
+# # when a function is inside a class Python calls these methods
+
+
+# Eleventh Example - introduce __str__
+
+# class Student:  
+#     def __init__(self, name, house): 
+#         if not name:
+#             raise ValueError("Missing name") # ValueError is an object that string can be passed
+#         if house not in ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]:
+#             raise ValueError("Invalid house")
+#         self.name = name
+#         self.house = house
+# 
+#     def __str__(self): # takes on arguement
+#         return f"{self.name} from {self.house}"
+# 
+# def main():
+#     student = get_student()
+#     print(student) # returns the __str__ by default
+# 
+# def get_student():
+#     name = input("Name: ")
+#     house = input("House: ")
+#     # try and except can be used here - mentioned but not part of demo
+#     return Student(name, house)
+# 
+# if __name__ == "__main__":
+#     main()
+
+
+
+# Eleventh Example - introduce raise
+
+# class Student:  
+#     def __init__(self, name, house): 
+#         if not name:
+#             raise ValueError("Missing name") # ValueError is an object that string can be passed
+#         if house not in ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]:
+#             raise ValueError("Invalid house")
+#         self.name = name
+#         self.house = house
+# 
+# def main():
+#     student = get_student()
+#     print(f"{student.name} from {student.house}")
+# 
+# def get_student():
+#     name = input("Name: ")
+#     house = input("House: ")
+#     # try and except can be used here - mentioned but not part of demo
+#     return Student(name, house)
+# 
+# if __name__ == "__main__":
+#     main()
+# 
+# # validating data input into the class
+# # keeping this with the class is best practice
+
+
+# Tenth Example - introduce __init__
+
+# class Student:  
+#     def __init__(self, name, house): # 
+#         self.name = name
+#         self.house = house
+# 
+# def main():
+#     student = get_student()
+#     print(f"{student.name} from {student.house}")
+# 
+# def get_student():
+#     name = input("Name: ")
+#     house = input("House: ")
+#     return Student(name, house) # no need for the variable assignment
+#     
+# 
+# if __name__ == "__main__":
+#     main()
+
+# tighten up the code from Ninth Example
 
 
 # Ninth Example - classes are mutable, they come with methods
 
 # class Student:  
 #     def __init__(self, name, house): # this is called when creating an object from this class
-#         self.name = self.name
-#         self.house = self.house
+#         self.name = name
+#         self.house = house
 # 
 # # what is self?
 # # convention is to always call it self - could technically be any name
