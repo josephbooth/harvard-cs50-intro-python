@@ -4,7 +4,7 @@ import re
 
 url = input("URL: ").strip()
 
-if matches := re.search(r"^https?://(?:www\.)?twitter\.com/(.+)$", url, re.IGNORECASE):
+if matches := re.search(r"^https?://(?:www\.)?twitter\.com/([a-z0-9_]+)$", url, re.IGNORECASE):
     print(f"Username: ", matches.group(1)) # notice this is now group(1)
 
 # tighten up the code using the walrus operator
