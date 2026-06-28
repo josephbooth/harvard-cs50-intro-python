@@ -1,28 +1,97 @@
+# Thirteenth Example
+
+import argparse
+
+parser = argparse.ArgumentParser(description="Meow like a cat")
+parser.add_argument("-n", default=1, help="number of times to meow", type=int) # added default and type
+args = parser.parse_args() # this handles the order parsing for the programmer
+
+for _ in range(int(args.n)):
+    print("meow")
+
+# default now handles when user does not submit a -n N
+# type=int does the conversion of the N value when entered by user
+
+
+# Twelfth Example - argparse library supports the passing in of options via command line
+
+# import argparse
+# 
+# parser = argparse.ArgumentParser(description="Meow like a cat")
+# parser.add_argument("-n", help="number of times to meow")
+# args = parser.parse_args() # this handles the order parsing for the programmer
+# 
+# for _ in range(int(args.n)):
+#     print("meow")
+# 
+# 
+# # https://docs.python.org/3.14/library/argparse.html
+# # argparser has access to sys.argv
+# # there is a convention to have a -h or --help for command line programs
+# # % python3 meows.py -h
+# # usage: meows.py [-h] [-n N]
+# # 
+# # Meow like a cat
+# # 
+# # options:
+# #   -h, --help  show this help message and exit
+# #   -n N        number of times to meow
+ 
+
+# Eleventh Example - how to handle switches or flags
+
+# import sys
+# 
+# if len(sys.argv) == 1:
+#     print("meow")
+# elif len(sys.argv) == 3 and sys.argv[1] == "-n":
+#     n = int(sys.argv[2])
+#     for _ in range(n):
+#         print("meow")
+# else:
+#     print("usage: meows.py")
+# 
+# # python meows.py -n 3
+# # command line arguments are those that appear after the file name
+
+# Tenth Example
+
+# import sys
+# 
+# if len(sys.argv) == 1:
+#     print("meow")
+# else:
+#     print("usage: meows.py")
+# 
+# # reminder sys.argv are the arguments being passed into the program
+# # from the command line
+
+
 # Ninth Example
 
-def meow(n: int) -> str:
-    """
-    Meow n times.
-    
-    :param n: Number of times to meow
-    :type n: int
-    :raise TypeError: If n is not an int
-    :return: A string of n meows, one per line
-    :retype: str
-    """
-    return "meow\n" * n
-
-number: int = int(input("Number: "))
-meows: str = meow(number)
-print(meows, end="")
-
-# tools can be used to extract the docstrings
-# conventions for this documentation style
-# the syntax of the comment is called restructured text
-# it's not enforced by the language
-# tools use this convention to document functions
-# does not have anything to do with type hints
-# this is a third party convention so tools can generate docs, web page, etc.
+# def meow(n: int) -> str:
+#     """
+#     Meow n times.
+#     
+#     :param n: Number of times to meow
+#     :type n: int
+#     :raise TypeError: If n is not an int
+#     :return: A string of n meows, one per line
+#     :retype: str
+#     """
+#     return "meow\n" * n
+# 
+# number: int = int(input("Number: "))
+# meows: str = meow(number)
+# print(meows, end="")
+# 
+# # tools can be used to extract the docstrings
+# # conventions for this documentation style
+# # the syntax of the comment is called restructured text
+# # it's not enforced by the language
+# # tools use this convention to document functions
+# # does not have anything to do with type hints
+# # this is a third party convention so tools can generate docs, web page, etc.
 
 
 # Eighth Example - introduce docstrings
