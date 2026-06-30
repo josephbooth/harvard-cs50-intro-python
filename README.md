@@ -15,3 +15,11 @@ My hope is that since I went through all the lectures first; the problem sets wi
 
 What is interesting is that there appears to be a way - using GitHub - to submit solutions to the problem sets. Time will tell if I'm able to get this to work for me.
 
+## Problem Sets - GitHub Repo
+I didn't fully read the description of the YouTube video at the start and now I'm working through the problem sets. It turns out that the CS50 course sets up a GitHub repo for the creation of the code submissions.
+
+My repo is: [me50/josephbooth](https://github.com/me50/josephbooth)
+
+I'm using this opportunity to also learn more git commands and to manage a repo through the terminal. So this should be a great learning experience.
+
+[end]
